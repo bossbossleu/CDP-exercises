@@ -1,0 +1,15 @@
+body {
+    background-color: lightblue;
+  }
+  
+  h1 {
+    color:rgb(247, 0, 255);
+      font-size: 300pt;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  p {
+      color:rgb(247, 0, 255);
+      font-size: 100pt;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
