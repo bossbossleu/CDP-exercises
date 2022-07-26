@@ -2,14 +2,37 @@ body {
     background-color: lightblue;
   }
   
+  a:link {
+    color: rgb(247, 0, 255);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: yellow;
+  }
+  
   h1 {
     color:rgb(247, 0, 255);
-      font-size: 300pt;
+      font-size: 200pt;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      padding: 20px;
+      line-height: 0.3;
   }
 
   p {
       color:rgb(247, 0, 255);
-      font-size: 100pt;
+      font-size: 72pt;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .leftbox{
+    float: left;
+    padding: 10px;
+    width: 33%;
+  }
+
+  .rightbox{
+    float: right;
+    padding: 0px;
+    width: 33%;
   }
