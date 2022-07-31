@@ -15,48 +15,18 @@ const map = new mapboxgl.Map({
   maxBounds: bounds,
 });
 
-map.on('load', () => {
-    map.addSource('stoop', {
+var marker = new mapboxgl.Marker();
 
-      'type': 'geojson',
-      'data': {
-        'type': 'FeatureCollection',
-        'features': [{
-            'type': 'Feature',
-            'properties': {
-              'image':'',
-              'description': '',
-              'icon': 'marker-15',
-              
-            },
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-73.96, 40.80]
-            }
-          },
-        ]
-      }
-    });
+function addMarker (event) {
+  
+  //add marker
+  map.on('click', addMarker.bind(this));
+  var coordinates = event.lngLat;
+  console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+  marker.setLngLat(coordinates).addTo(map);
 
-    map.addLayer({
-      'id': 'stoop',
-      'type': 'symbol',
-      'source': 'stoop',
-      'layout': {
-        'icon-image': '{icon}',
-        'icon-allow-overlap': true
-      }
-    });
-  
-    map.on('click', 'stoop', (e) => {
-      const coordinates = e.features[0].geometry.coordinates.slice();
-  
-
-      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-      }
-  
-      new mapboxgl.Popup()
+  //add popup window
+  new mapboxgl.Popup()
         .setLngLat(coordinates)
         .setHTML(
             `<head class="popup-main">
@@ -79,13 +49,14 @@ map.on('load', () => {
                           `
           )
         .addTo(map);
-    });
-  
-    map.on('mouseenter', 'stoop', () => {
+};
+
+map.on('click', addMarker);
+
+ map.on('mouseenter', 'stoop', () => {
       map.getCanvas().style.cursor = 'pointer';
     });
   
-    map.on('mouseleave', 'stoop', () => {
+map.on('mouseleave', 'stoop', () => {
       map.getCanvas().style.cursor = '';
     });
-  });
